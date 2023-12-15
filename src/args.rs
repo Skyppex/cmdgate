@@ -11,7 +11,7 @@ pub(crate) struct Args {
     #[arg(short, long)]
     pub destination: Option<String>,
 
-    /// cmd command to run
+    /// cmd command to run (REQUIRED)
     #[arg(short, long)]
     pub command: String,
 }
