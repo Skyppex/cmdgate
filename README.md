@@ -16,7 +16,7 @@ At any time when running the command you can use `-h` or `--help` to see all the
 ### Options
 - `-s or --source` -> Path to file to read from, otherwise it uses stdin
 - `-d or --destination` -> Path to file to write to, otherwise it uses stdout
-- `-c or --command` -> cmd command to run (REQUIRED)
+- `-c or --command` -> cmd command to run *(REQUIRED)*
 - `-v or --version` -> This will print the version number (which will probably never change)
 
 ## Pull Requests & Issues
