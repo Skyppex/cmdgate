@@ -7,7 +7,12 @@ mod args;
 fn main() {
     let args = Args::parse();
     let cmd = args.command;
-    // println!("cmd: {}", cmd);
+    let verbose = args.verbose;
+    
+    if verbose {
+        eprintln!("CMDGATE: command = {}", cmd);
+    }
+
     let command = &mut Command::new("cmd");
 
     match args.source {
@@ -22,14 +27,17 @@ fn main() {
         }
     }
 
-    let mut arg = "/C ".to_owned();
-    arg.push_str(cmd.as_str());
+    let mut arg = String::from("/C ");
+    arg.push_str(&cmd);
 
-    // println!("arg: {}", arg);
+    if verbose {
+        eprintln!("CMDGATE: cmd args = /C {}", cmd);
+    }
 
     let output = command
-        .arg(arg)
-        .output().expect(format!("failed to execute process: {cmd}").as_str());
+        .arg("/C")
+        .arg("dir")
+        .output().expect(format!("failed to execute process: cmd {arg}").as_str());
 
     match args.destination {
         None => io::stdout().write_all(&output.stdout).expect("failed to write to stdout"),
