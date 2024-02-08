@@ -20,4 +20,7 @@ pub(crate) struct Args {
     /// Verbose mode
     #[arg(short, long)]
     pub verbose: bool,
+
+    #[arg(short, long)]
+    pub utf8: bool,
 }
