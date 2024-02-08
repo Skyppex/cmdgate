@@ -4,10 +4,22 @@
 
 ## Installation
 
-I didn't want to push a binary to the repo so you will have to build it yourself using `cargo` and `rustc`. Make sure you have that installed!
-Then pull the repo onto your machine, navigate to the path containing the `cargo.toml` file.
-Make sure to take a look at the code so you know its not malware (i had some problems with my anti malware software netralizing the binary when i ran it.
-Run `cargo build --release` and the exe will be dumped in the `./target/release` folder. From there you have the binary and can do with it what you wish. :D
+- Using scoop
+```pwsh
+scoop bucket add sky-bucket https://github.com/skyppex/sky-bucket
+scoop install skyppex/cmdgate
+```
+
+- Build it your self
+Make sure you have `cargo` and `rustc` installed.
+Then pull the repo onto your machine.
+```pwsh
+git clone https://github.com/Skyppex/cmdgate.git
+```
+Navigate to the path containing the `cargo.toml` file.
+Make sure to take a look at the code so you know its not malware (i had some problems with my anti malware software netralizing the binary when i ran it).
+Run `cargo build --release` and the executable will be dumped in the `./target/release` folder. From there you have the binary and can execute it from your command line. :D
+It's recommended to add it to your PATH or copy it to a folder already in your PATH.
 
 ## Usage
 
@@ -17,7 +29,7 @@ At any time when running the command you can use `-h` or `--help` to see all the
 - `-s or --source` -> Path to file to read from, otherwise it uses stdin
 - `-d or --destination` -> Path to file to write to, otherwise it uses stdout
 - `-c or --command` -> cmd command to run *(REQUIRED)*
-- `-v or --version` -> This will print the version number (which will probably never change)
+- `-v or --version` -> This will print the version number
 
 ## Pull Requests & Issues
 
