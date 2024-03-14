@@ -7,7 +7,7 @@
 - Using scoop
 ```pwsh
 scoop bucket add sky-bucket https://github.com/skyppex/sky-bucket
-scoop install skyppex/cmdgate
+scoop install sky-bucket/cmdgate
 ```
 
 - Build it your self
