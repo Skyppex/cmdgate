@@ -1,6 +1,6 @@
 # cmdgate
 
-`cmdgate` provides a way to call cmd commands from other CLIs such as bash.
+`cmdgate` provides a way to call cmd commands from other CLIs such as bash from WSL.
 
 ## Installation
 
