@@ -11,6 +11,7 @@ scoop install sky-bucket/cmdgate
 ```
 
 - Build it your self
+
 Make sure you have `cargo` and `rustc` installed.
 Then pull the repo onto your machine.
 ```pwsh
