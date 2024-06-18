@@ -17,6 +17,10 @@ Then pull the repo onto your machine.
 ```pwsh
 git clone https://github.com/Skyppex/cmdgate.git
 ```
+or
+```pwsh
+gh repo clone Skyppex/cmdgate
+```
 Navigate to the path containing the `cargo.toml` file.
 Make sure to take a look at the code so you know its not malware (i had some problems with my anti malware software netralizing the binary when i ran it).
 Run `cargo build --release` and the executable will be dumped in the `./target/release` folder. From there you have the binary and can execute it from your command line. :D
