@@ -1,7 +1,7 @@
 # cmdgate
 
 `cmdgate` provides a way to call `cmd` commands from other CLIs such as bash from WSL
-by starting a `cmd` process, piping stdin, and captuing output from `stdout` and `stderr`.
+by starting a `cmd` process, piping `stdin`, and captuing output from `stdout` and `stderr`.
 
 ## Installation
 
