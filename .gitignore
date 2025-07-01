@@ -1,7 +1,2 @@
-/target/debug
-/target/.rustc_info.json
-/target/CACHEDIR.TAG
+/target
 .idea
-
-/target/release/*
-!/target/release/cmdgate.exe

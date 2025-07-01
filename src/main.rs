@@ -15,7 +15,8 @@ fn main() {
     let verbose = args.verbose;
 
     if verbose {
-        eprintln!("{} -> command: {}", name, cmd);
+        eprintln!("{} -> inner command: {}", name, cmd);
+        eprintln!("{} -> outer command: cmd.exe /C \"{}\"", name, cmd);
 
         match args.source {
             Some(ref path) => eprintln!("source: {}", path),
@@ -28,12 +29,13 @@ fn main() {
         }
     }
 
-    let command = &mut Command::new("cmd");
+    let command = &mut Command::new("cmd.exe");
 
     match args.source {
         Some(path) => {
             command.stdin(std::process::Stdio::from(
-                std::fs::File::open(&path).expect(format!("failed to open file: {path}").as_str()),
+                std::fs::File::open(&path)
+                    .unwrap_or_else(|_| panic!("failed to open file: {path}")),
             ));
         }
         None => {
@@ -41,18 +43,10 @@ fn main() {
         }
     }
 
-    let command_parts = cmd.split_whitespace();
-    let mut cmd_args = command_parts.collect::<Vec<&str>>();
-    cmd_args.insert(0, "/C");
-
-    if verbose {
-        eprintln!("{} -> cmd args: {}", name, cmd_args.join(" "));
-    }
-
     let output = command
-        .args(cmd_args.clone())
+        .args(["/C", &cmd])
         .output()
-        .expect(format!("failed to execute process: cmd {}", cmd_args.join(" ")).as_str());
+        .unwrap_or_else(|_| panic!("failed to execute process: cmd {}", cmd));
 
     let stdout = if args.utf8 {
         String::from_utf8_lossy(&output.stdout).as_bytes().to_vec()
@@ -65,7 +59,8 @@ fn main() {
             .write_all(&stdout)
             .expect("failed to write to stdout"),
         Some(path) => {
-            std::fs::write(&path, &stdout).expect(format!("failed to write file: {path}").as_str());
+            std::fs::write(&path, &stdout)
+                .unwrap_or_else(|_| panic!("failed to write file: {path}"));
         }
     }
 
